@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chatbot Integration</title>
+    <!-- Link to external CSS file (if any) -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- You can also include meta tags for SEO and social sharing here -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#chatbot">Chatbot</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+<df-messenger
+  project-id="testproject01-448022"
+  agent-id="a29d6531-5965-415a-938f-6628ac344775"
+  language-code="en"
+  max-query-length="-1">
+  <df-messenger-chat
+   chat-title="LearnBot">
+  </df-messenger-chat>
+</df-messenger>
+<style>
+  df-messenger {
+    z-index: 999;
+    position: fixed;
+    --df-messenger-font-color: #000;
+    --df-messenger-font-family: Google Sans;
+    --df-messenger-chat-background: #f3f6fc;
+    --df-messenger-message-user-background: #d3e3fd;
+    --df-messenger-message-bot-background: #fff;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    width: 350px;
+  }
+</style>
+    <!-- Main Content Section -->
+    <main>
+        <section id="home">
+            <h1>Welcome to Our Chatbot Service</h1>
+            <p></p>
+        </section>
+
+        <section id="chatbot">
+            <h2>Chat with Us</h2>
+            <!-- Chatbot Interface -->
+            <div id="chat-container">
+                <div id="chatbox">
+                    <div id="messages"></div>
+                    <input type="text" id="user-input" placeholder="Type a message..." />
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>This is a section about our company or service. Here, you can describe what your chatbot is for.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us through the form below.</p>
+            <form action="/submit-form" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <textarea id="message" name="message" placeholder="Your message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 My Chatbot Service. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to external JavaScript file (for chatbot functionality) -->
+    <script src="scripts.js"></script>
+
+    <!-- Optional: Chatbot Integration (for example, a third-party chatbot script) -->
+    <!-- Example of a chatbot widget -->
+    <script>
+        // Example chatbot functionality (you can customize this or use a third-party service)
+        document.getElementById("send-message").addEventListener("click", function() {
+            const userInput = document.getElementById("user-input").value;
+            const messages = document.getElementById("messages");
+
+            if (userInput) {
+                const userMessage = document.createElement("div");
+                userMessage.classList.add("user-message");
+                userMessage.textContent = `You: ${userInput}`;
+                messages.appendChild(userMessage);
+
+                // Simulating a response from the chatbot
+                const botResponse = document.createElement("div");
+                botResponse.classList.add("bot-response");
+                botResponse.textContent = `Bot: I received your message: "${userInput}"`;
+                messages.appendChild(botResponse);
+
+                // Clear the input field after sending the message
+                document.getElementById("user-input").value = "";
+            }
+        });
+    </script>
+</body>
+</html>
